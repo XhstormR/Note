@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="note" type="com.xhstormr.note.entity.Note"*/-->
+<!--/*@thymesVar id="data" type="java.lang.String"*/-->
+<head>
+    <div th:replace="fragment :: head"></div>
+</head>
+<body>
+
+<div class="box">
+    <header class="mgt25 small">
+        <a th:href="@{/notes}">记事本</a>&nbsp;›&nbsp;<a th:href="@{/notes/{id}(id=${note.id})}" th:text="${note.title}"></a>&nbsp;›&nbsp;查看文件
+    </header>
+
+    <header class="mgt25">
+        <button class="opacity" style="width:49%" th:onclick="'location.href=\'/notes/edit/'+${note.id}+'\''">编辑</button><button class="opacity" style="width:49%; margin-left: 2%" th:onclick="'if (confirm(\'确认彻底删除文件？\')) {location.href=\'/notes/delete/'+${note.id}+'\';}'">删除</button>
+    </header>
+
+    <main th:utext="${data}" class="mgt25 opacity note"></main>
+
+    <div th:replace="fragment :: footer"></div>
+</div>
+
+</body>
+</html>

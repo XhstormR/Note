@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="note" type="com.xhstormr.note.entity.Note"*/-->
+<head>
+    <div th:replace="fragment :: head"></div>
+</head>
+<body>
+
+<div class="box">
+    <header class="mgt25 small">
+        <a th:href="@{/notes}">记事本</a>&nbsp;›&nbsp;<a th:href="@{/notes/{id}(id=${note.id != -1 ? note.id : ''})}" th:text="${note.title}"></a>&nbsp;›&nbsp;编辑文件
+    </header>
+
+    <header class="mgt25">
+        <button class="opacity" style="width:49%" onclick="document.getElementById('form').submit()">保存</button><button class="opacity" style="width:49%; margin-left: 2%" th:onclick="'if (confirm(\'确认放弃更改文件？\')) {location.href=\'/notes/'+${note.id != -1 ? note.id : ''}+'\';}'">放弃</button>
+    </header>
+
+    <form id="form" method="post">
+        <textarea th:text="${note.details.content}" class="mgt25 opacity edit" name="content" autofocus></textarea>
+    </form>
+
+    <div th:replace="fragment :: footer"></div>
+</div>
+
+</body>
+</html>

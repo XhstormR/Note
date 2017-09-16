@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="notes" type="java.util.List<com.xhstormr.note.entity.Note>"*/-->
+<head>
+    <div th:replace="fragment :: head"></div>
+</head>
+<body>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg" height="0" width="0" style="position: absolute;">
+    <defs>
+        <g id="file" stroke="#000" stroke-width="25" fill="#FFF" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 24.12v274.76c0 6.16 5.87 11.12 13.17 11.12H239c7.3 0 13.17-4.96 13.17-11.12V136.15S132.6 13 128.37 13H26.17C18.87 13 13 17.96 13 24.12z"></path>
+            <path d="M129.37 13L129 113.9c0 10.58 7.26 19.1 16.27 19.1H249L129.37 13z"></path>
+        </g>
+    </defs>
+</svg>
+
+<div class="box">
+    <header class="mgt25 small">
+        记事本
+    </header>
+
+    <header class="mgt25">
+        <button class="opacity" style="width:100%" onclick="location.href='/notes/new'">新建记事</button>
+    </header>
+
+    <main th:if="${notes.size() != 0}" class="mgt25 opacity">
+        <div th:each="note : ${notes}" class="cell" th:onclick="'location.href=\'/notes/'+${note.id}+'\''">
+            <span>
+                <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                [[${note.title}]]
+            </span>
+            <div class="sep5"></div>
+            <span class="fade small">最后编辑于 [[${#dates.format(note.modifyTime,'yyyy-MM-dd HH:mm')}]] &nbsp;•&nbsp; [[${note.editNum}]] 次编辑 &nbsp;•&nbsp; [[${note.charNum}]] 个字符</span>
+        </div>
+    </main>
+
+    <div th:replace="fragment :: footer"></div>
+</div>
+
+</body>
+</html>
