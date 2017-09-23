@@ -24,7 +24,7 @@ a {
 }
 
 ol, ul {
-    margin: 1rem;
+    padding-left: 2em;
 }
 
 button {
@@ -78,6 +78,17 @@ button:hover {
 
 .note img {
     max-width: 100%;
+    background-color: transparent;
+}
+
+.note pre, .note code {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-left: 2px solid #ffeb8e;
+    border-radius: 5px;
+}
+
+.note code {
+    padding: 4px;
 }
 
 .small {

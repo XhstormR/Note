@@ -3,7 +3,7 @@
 <!--/*@thymesVar id="note" type="com.xhstormr.note.entity.Note"*/-->
 <!--/*@thymesVar id="data" type="java.lang.String"*/-->
 <head>
-    <div th:replace="fragment :: head"></div>
+    <th:block th:include="fragment :: head"></th:block>
 </head>
 <body>
 
@@ -16,7 +16,7 @@
         <button class="opacity" style="width:49%" th:onclick="'location.href=\'/notes/edit/'+${note.id}+'\''">编辑</button><button class="opacity" style="width:49%; margin-left: 2%" th:onclick="'if (confirm(\'确认彻底删除文件？\')) {location.href=\'/notes/delete/'+${note.id}+'\';}'">删除</button>
     </header>
 
-    <main th:utext="${data}" class="mgt25 opacity note"></main>
+    <main th:utext="${data}" class="mgt25 opacity note markdown-body"></main>
 
     <div th:replace="fragment :: footer"></div>
 </div>
