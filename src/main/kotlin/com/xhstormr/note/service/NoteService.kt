@@ -7,7 +7,7 @@ interface NoteService {
     fun getAll(): List<Note>
     fun save(note: Note, content: String): Note
     fun delete(id: Long)
-    fun markDown(content: String): String
+    fun markdown(content: String): String
 
     companion object {
         val separator: String = System.getProperty("line.separator")

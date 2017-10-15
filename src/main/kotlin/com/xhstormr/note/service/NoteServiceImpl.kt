@@ -29,5 +29,5 @@ open class NoteServiceImpl(private val noteRepository: NoteRepository) : NoteSer
         return noteRepository.save(note)
     }
 
-    override fun markDown(content: String) = content.split(NoteService.separator).let { CMark.execute(it) }.joinToString(separator = "")
+    override fun markdown(content: String) = content.split(NoteService.separator).let { CMark.execute(it) }.joinToString(separator = "")
 }

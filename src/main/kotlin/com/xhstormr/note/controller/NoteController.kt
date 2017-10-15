@@ -31,7 +31,7 @@ class NoteController(private val noteService: NoteService) {
     @GetMapping("/{id}")
     fun show(@PathVariable id: Long, model: Model): String {
         val note = noteService.get(id)
-        val data = noteService.markDown(note.details.content)
+        val data = noteService.markdown(note.details.content)
         model.addAttribute("note", note)
         model.addAttribute("data", data)
         return "note"

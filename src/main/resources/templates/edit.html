@@ -7,7 +7,7 @@
 <body>
 
 <div class="box">
-    <header class="mgt25 small">
+    <header class="mgt25">
         <a th:href="@{/notes}">记事本</a>&nbsp;›&nbsp;<a th:href="@{/notes/{id}(id=${note.id != -1 ? note.id : ''})}" th:text="${note.title}"></a>&nbsp;›&nbsp;编辑文件
     </header>
 
